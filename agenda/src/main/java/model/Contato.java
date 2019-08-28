@@ -1,23 +1,24 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Contato")
-public class Contato {
-    @Column
+@Table(name = "c")
+public class Contato  implements Serializable{
     @Id
-    @NotBlank
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @NotBlank
+    @Column(name = "Nome")
     private String nome;
 
-    @Column
-    @NotBlank
+    @Column(name = "Telefone")
     private String telefone;
+
+    public Contato() {}
 
     public Contato(long id, String nome, String telefone) {
     	this.id=id;
@@ -43,7 +44,4 @@ public class Contato {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	@ManyToOne
-	private Usuario usuario;
-	
 }

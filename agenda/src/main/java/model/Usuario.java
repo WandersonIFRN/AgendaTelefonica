@@ -1,26 +1,25 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Usuario")
-public class Usuario {
-    @Column
+@Table(name = "u")
+public class Usuario  implements Serializable{
     @Id
-    @NotBlank
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @NotBlank
+    @Column(name = "Login")
     private String login;
 
-    @Column
-    @NotBlank
+    @Column(name = "Senha")
     private String senha;
-    
+
+    public Usuario() {}
     public Usuario(long id, String login, String senha) {
     	this.id=id;
     	this.login=login;
@@ -45,6 +44,4 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	@OneToMany
-	private List<Contato> contatos;
 }

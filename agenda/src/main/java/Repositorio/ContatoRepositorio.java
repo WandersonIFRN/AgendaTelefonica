@@ -7,5 +7,5 @@ import model.*;
 
 @Repository
 public interface ContatoRepositorio extends JpaRepository<Contato, Long>{
-
+	Contato findById(long id);
 }
